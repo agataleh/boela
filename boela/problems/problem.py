@@ -35,11 +35,14 @@ class Solution:
             self.c = np.atleast_1d(self.c).astype(float)
 
     def __str__(self):
-        return (
-            f"x: {np.array_str(self.x)}; "
-            f"f: {np.array_str(self.f)}; "
-            f"c: {np.array_str(self.c)}; "
-        )
+        if self.x is None:
+            return f"Solutions: -"
+        solutions = f"Solutions:\n  x: {np.array_str(self.x)}"
+        if self.f is not None:
+            solutions += f"\n  f: {np.array_str(self.f)}"
+        if self.c is not None:
+            solutions += f"\n  c: {np.array_str(self.c)}"
+        return solutions
 
 
 @dataclass
